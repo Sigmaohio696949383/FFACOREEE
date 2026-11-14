@@ -17,6 +17,8 @@ jobs:
           F="$(find out -name FFACore.java | head -1)"
           sed -i 's/sb\.color(ChatColor\.WHITE)/sb.color(NamedTextColor.WHITE)/' "$F"
           sed -i '/^import org\.bukkit\.ChatColor;/d' "$F"
+          P="$(find out -name plugin.yml | head -1)"
+          sed -i 's/^description: .*/description: Advanced FFA Core/' "$P"
       - run: |
           cd "$(dirname "$(find out -name pom.xml | head -1)")"
           mvn -B clean package
